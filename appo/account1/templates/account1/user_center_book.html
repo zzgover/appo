@@ -1,0 +1,50 @@
+{% extends 'base_user_center.html' %}
+{% load static %}
+
+{% block content_right %}
+<br>
+<br>
+{% if not book %}
+<div class="panel panel-danger">
+    <div class="panel-heading">预约信息</div>
+    <div class="panel-body">
+        <p>暂无预约信息</p>
+    </div>
+</div>
+{% else %}
+<div class="panel panel-danger">
+    <div class="panel-heading">预约列表</div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th style="text-align:center;">姓名</th>
+                <th style="text-align:center;">性别</th>
+                <th style="text-align:center;">电话</th>
+                <th style="text-align:center;">地址</th>
+                <th style="text-align:center;">项目</th>
+                <th style="text-align:center;">时间</th>
+                <th style="text-align:center;">操作</th>
+            </tr>
+            </thead>
+<!--                            <tbody id="tb">-->
+<!--                            {%for item in b_list%}-->
+<!--                            <td id="name">{{item.p_name}}</td>-->
+<!--                            <td id="gender">{{item.P_gender}}</td>-->
+<!--                            <td id="telephone">{{item.p_phonenum}}</td>-->
+<!--                            <td id="address">{{item.p_address}}</td>-->
+<!--                            <td id="project">{{item.p_project}}</td>-->
+<!--                            <td id="pub_date">{{item.pub_date}}</td>-->
+<!--                            <td>-->
+<!--                                &lt;!&ndash;                <a href="#" class="btn btn-primary btn-sm" role="button">编辑</a>&ndash;&gt;-->
+<!--                                <a href="{% url 'book:delete' %}" class="btn btn-danger btn-sm" role="button" onclick="removeitem(this)">删除</a>-->
+<!--                            </td>-->
+<!--                            </tr>-->
+<!--                            {% endfor %}-->
+<!--                            </tbody>-->
+        </table>
+    </div>
+</div>
+{% endif %}
+</div>
+{% endblock content_right %}

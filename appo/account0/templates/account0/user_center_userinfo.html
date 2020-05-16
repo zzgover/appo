@@ -1,0 +1,32 @@
+{% extends 'base.html'	%}
+{% load static	%}
+{% block content %}
+    <br>
+    <br>
+    <div class="panel panel-danger">
+        <div class="panel-heading">个人信息</div>
+        <div class="panel-body">
+            {% if user_profile %}
+                <p>姓名：{{ user_profile.real_name }}</p>
+                <p>电话号码：{{ user_profile.phone }}</p>
+
+            {% else %}
+                {{ msg }}<p>请在下列表格中填入个人信息。</p>
+            {% endif %}
+        </div>
+    </div>
+    <form action=""	method="post">
+        {% csrf_token %}
+        {% for field in up_form	%}
+            <div class="form-group">
+                {{ field.label_tag }}{{ field.as_widget }}
+                {% if field.errors %}
+                    {% for error in field.errors %}
+                        <p class="error">{{ error|escape }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button	type="submit" class="btn btn-default">确定</button>
+    </form>
+{% endblock content %}

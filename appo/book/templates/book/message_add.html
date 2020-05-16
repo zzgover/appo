@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{%load static%}
+{% block content_one %}
+<div>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!--        {{ form.as_p }}-->
+        {% if request.user.is_authenticated %}
+        <label for="user">用户名:</label>
+        <input class="form-control" type="text"
+               name='user' placeholder="Name" value="{{ request.user.username }}"/>
+        {% else %}
+        123
+
+        {% endif %}
+        {% for field in form %}
+        <div class="form-group">
+            {{ field.label }}
+            {{ field }}
+        </div>
+        {% endfor %}
+        <p><input class="btn btn-primary" type="submit" value="保存"/></p>
+    </form>
+</div>
+
+{% endblock content_one %}
+
+{% block css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+{% endblock css %}
+
+{% block js %}
+<!-- XDSoft DateTimePicker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+<script>
+    $(function () {
+        $("#id_pub_date").datetimepicker( {
+            format:'Y-m-d H:i',
+        });
+    });
+</script>
+{% endblock js %}
+
+
+
+

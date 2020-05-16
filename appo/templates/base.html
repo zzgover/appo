@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>我的预约系统</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <link href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700italic,700,400italic,300italic,300' rel='stylesheet' type='text/css'>
+    <!-- bootstrap-css -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
+    <!--// bootstrap-css -->
+    <!-- css -->
+    <!--    <link rel="stylesheet" href="{% static 'css/style1.css' %}" type="text/css"/>-->
+    <!--// css -->
+    <!-- font-awesome icons -->
+    <!--    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">-->
+
+    <script src="{% static 'bootstrap/js/jquery-3.3.1.min.js'%}"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!--    <script src="//blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>-->
+    <style>
+
+        /*-- copyright --*/
+        .agileits-w3layouts-copyright{
+            padding:1em 0;
+            background: #8b8681;
+            text-align:left;
+        }
+        .agileits-w3layouts-copyright p{
+            color:#FFFFFF;
+        }
+        .agileits-w3layouts-copyright p a{
+            color:#82b62d;
+        }
+        .agileits-w3layouts-copyright p a:hover{
+            color:#FFFFFF;
+        }
+        /*-- //copyright --*/
+        .w3-welcome-left p{
+            color: #8e8e8e;
+            font-size:.9em;
+            line-height:1.8em;
+            margin:1em 0 0 0;
+        }
+        @media(max-width:320px){
+            .w3ls-welcome-img2 {
+                padding: 0;
+            }
+            .w3-welcome-left {
+                padding: 0;
+            }
+            .w3ls-welcome-img1 {
+                padding: 0;
+            }
+        }
+        @media(max-width:480px){
+            .w3-welcome-grids{
+                margin: 2em 0 0 0;
+            }
+        }
+        @media(max-width:991px){
+            .w3ls-welcome-img2 {
+                margin: 0 0 2em 0 !important;
+            }
+        }
+        .w3ls-welcome-img1 img{
+            width:100%;
+        }
+        .w3-button{
+            margin: 2em 0 1em 0;
+        }
+        .w3-button a{
+            color: #FFFFFF;
+            font-size: 1em;
+            text-decoration: none;
+            padding: .5em 2em;
+            background: #82b62d;
+            text-align: center;
+            border: solid 2px #82b62d;
+        }
+        .w3-button a:hover{
+            background:none;
+            border: solid 2px #FFFFFF;
+        }
+        button.btn1:hover{
+            border: solid 1px #ffffff;
+            background: none;
+        }
+        button.btn1:hover i.fa.fa-paper-plane-o{
+            color: #FFFFFF !important;
+        }
+        .movie-content
+        {
+            min-height: 425px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+
+                <!-- <a class="navbar-brand" href="#">Brand</a> -->
+                <img style="float:left" src="{% static 'image/logo.png' %}" width="40px" height="40px">
+
+
+                <ul class="nav navbar-nav"  style="float:left">
+                    <li>
+                        <a style="font-size: 18px" href="{% url 'project:index' %}">盲人推拿服务预约系统<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+
+
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+                <!--                <ul class="nav navbar-nav navbar-right" >-->
+                <!--                    {% if request.user.is_authenticated %}-->
+
+                <!--                    <li><a href="#">{{ request.user.username }},您好！</a></li>-->
+
+                <!--                    {% else %}-->
+
+                <!--                    <li><a href="{% url 'account:login' %}">登录</a></li>-->
+                <!--                    <li><a href="{% url 'account:enroll' %}">注册</a></li>-->
+
+                <!--                    {% endif %}-->
+                <!--                </ul>-->
+                <ul class="nav navbar-nav navbar-right" style="float:right">
+                    {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'account1:userinfo'%}">{{ request.user.username }},您好！</a></li>
+                    <li><a href="{%	url	'account1:logout' %}" class="glyphicon	glyphicon-log-out">退出登录</a></li>
+
+                    <li style="display: none"><a href="{% url 'account0:userinfo'%}">{{ request.user.username }},您好！</a></li>
+                    <li style="display: none"><a href="{%	url	'account0:logout' %}" class="glyphicon	glyphicon-log-out">退出登录</a></li>
+                    {% else %}
+                    <li><a href="{% url 'account1:login' %}">会员登录</a></li>
+                    <li><a href="{% url 'account1:register' %}">会员注册</a></li>
+
+                    <li><a href="{% url 'account0:login' %}" style="color: #669933">技师登录</a></li>
+                    <li><a href="{% url 'account0:register' %}" style="color: #669933">技师注册</a></li>
+                    {% endif %}
+
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</header>
+
+<div class="container">
+    <div class="movie-content">
+        {% block content %}
+        <div class="row">
+            {% block content_one %}
+            <div class="col-md-3">
+                {% block content_left %}
+                {% endblock content_left%}
+            </div>
+            <div class="col-md-9">
+                {% block content_right %}
+                {% endblock content_right%}
+            </div>
+            {% endblock content_one%}
+            <hr>
+            {% block content_two %}<div align="center">欢迎访问盲人推拿服务预约系统</div>{% endblock content_two %}
+        </div>
+        {% block css %}{% endblock css %}
+        {% block js %}{% endblock js %}
+        {% endblock content%}
+    </div>
+</div>
+
+<hr>
+<footer>
+    <div class="agileits-w3layouts-copyright">
+        <div class="container">
+            <div class="col-sm-5">
+                <div style="float:right">
+                    <img src="{% static 'image/wx.png' %}" width="100px" height="100px">
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <div style="float:left">
+                    <a style="color:#82b62d;" href="{% url 'tips:comment' %}">点我，评论该系统！</a>
+                    <p>柴师傅盲人推拿</p>
+                    <p>新疆维吾尔自治区乌鲁木齐市水磨沟区南湖北路西二巷32号</p>
+                    <p>(0991)4620038</p>
+
+                    <!--            <p>新疆农业大学计算机与信息工程学院</p>-->
+                    <!--            <p>新疆维吾尔自治区乌鲁木齐市沙依巴克区农大东路311号</p>-->
+                    <!--            <p>邮编：830052</p>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+<!--<script>-->
+<!--    var ut = $(".ut")-->
+<!--    var uc1 = $(".uc1")-->
+<!--    $(function () {-->
+<!--        $(uc1).onclick(function (event) {-->
+<!--            $(ut).hidden();-->
+<!--            event.stopPropagation(); //阻止事件向上冒泡-->
+<!--        });-->
+<!--        $(ut).onclick(function(event) {-->
+<!--            event.stopPropagation(); //阻止事件向上冒泡-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+</html>

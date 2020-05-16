@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{%load static%}
+{% block content %}
+<div align="center">
+    <form action="{%url 'book:retrieve1'%}" method="get">
+        <input type="text" name="keyword">
+        <select name='dropdown'>
+            <option id="project" value="project">项目</option>
+        </select>
+        <input type="submit" value="查找">
+    </form>
+    <br>
+    <ul>
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>电话</th>
+                <th>地址</th>
+                <th>项目</th>
+                <th>时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="tb">
+            {%for item in b_list%}
+            <td id="p_name">{{item.p_name}}</td>
+            <td id="P_gender">{{item.P_gender}}</td>
+            <td id="p_phonenum">{{item.p_phonenum}}</td>
+            <td id="p_address">{{item.p_address}}</td>
+            <td id="p_project">{{item.p_project}}</td>
+            <td id="pub_date">{{item.pub_date}}</td>
+
+            <td>
+                <!--                <a href="#" class="btn btn-primary btn-sm" role="button">编辑</a>-->
+                <a href="{% url 'book:delete' %}" class="btn btn-danger btn-sm" role="button" onclick="removeitem(this)">删除</a>
+            </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </ul>
+</div>
+{% endblock content %}

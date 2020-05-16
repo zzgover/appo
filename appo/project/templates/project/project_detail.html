@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{%load static%}
+{% block content_one %}
+
+<div class="product-information">
+    <div class="col-sm-6">
+        <img src="/media/{{ project.image }}"  width="512px" height="384px">
+    </div>
+    <div class="col-sm-6">
+
+        <h2>{{ project.name }}</h2>
+        <h3>时长：{{ project.duration }}&nbsp; &nbsp; &nbsp; &nbsp; ¥{{ project.price }}</h3>
+        <p>简介：{{ project.description }}</p>
+        <br>
+        <br>
+        <div class="w3-button">
+
+            <p><a class="btn btn-default" href="{%url 'book:message_add'%}" role="button">预约&raquo;</a>
+
+        </div>
+    </div>
+</div>
+
+{% endblock content_one %}
+
+{% block content_two %}
+<p></p>
+{% endblock content_two %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{%load static%}
+{% block content_one %}
+<div align="center" href="{%url 'tips:tips'%}">
+    <div class="demo"></div>
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    <script>
+        $('.demo').slider({
+            imgList: [
+                {
+                    img: 'static/image/index1.jpg',
+                    a: href="{%url 'tips:tips'%}",
+                },
+                {
+                    img: 'static/image/index0.jpg',
+                    a: href="{%url 'tips:tips'%}",
+                },
+                {
+                    img: 'static/image/index3.jpg',
+                    a: href="{%url 'tips:tips'%}",
+                }
+            ], //图片的列表
+            width: "100%", //图片的宽
+            height: 450, //图片的高
+            isAuto: true, //是否自动轮播
+            moveTime: 3000, //运动时间
+            direction: 'right', //轮播的方向
+            btnWidth: 30, //按钮的宽
+            btnHeight: 50, //按钮的高
+            spanWidth: 10, //span按钮的宽
+            spanHeight: 10, //span按钮的高
+            spanColor: 'rgba(0, 0, 0, 0.1)', //span按钮的颜色
+            activeSpanColor: 'gray', //选中的span颜色
+            btnBackgroundColor: 'rgba(0, 0, 0, 0.2)', //两侧按钮的颜色
+            spanRadius: '50%', //span按钮的圆角程度
+            spanMargin: 3, //span之间的距离
+        })
+    </script>
+    <br>
+
+</div>
+{% endblock content_one %}
+
+{% block content_two %}
+<h2 class="title text-center">热门项目</h2>
+
+{% for p in projects_order %}
+<div class="col-md-4" align="center">
+    <img src="/media/{{ p.image }}" width="350px" height="250px">
+
+    <h2>¥{{ p.price }}/次</h2>
+    <div class="w3-button">
+        <a href="{% url 'project:project_detail' p.pk %}" class="btn btn-default" role="button">{{ p.name|truncatechars:20 }}</a>
+    </div>
+</div>
+
+{%	endfor	%}
+
+{% endblock content_two %}
+
+
+
