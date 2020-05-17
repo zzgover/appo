@@ -9,15 +9,15 @@
         $('.demo').slider({
             imgList: [
                 {
-                    img: 'static/image/index1.jpg',
+                    img: src="{% static 'image/index1.jpg' %}",
                     a: href="{%url 'tips:tips'%}",
                 },
                 {
-                    img: 'static/image/index0.jpg',
+                    img: src="{% static 'image/index0.jpg' %}",
                     a: href="{%url 'tips:tips'%}",
                 },
                 {
-                    img: 'static/image/index3.jpg',
+                    img: src="{% static 'image/index3.jpg' %}",
                     a: href="{%url 'tips:tips'%}",
                 }
             ], //图片的列表
@@ -47,7 +47,7 @@
 
 {% for p in projects_order %}
 <div class="col-md-4" align="center">
-    <img src="/media/{{ p.image }}" width="350px" height="250px">
+    <img src="{{ MEDIA_URL }}{{ p.image }}" width="350px" height="250px" >
 
     <h2>¥{{ p.price }}/次</h2>
     <div class="w3-button">
